@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-heading">
+					<h4 class="card-title inline-block">18 Images</h4>
+					<div class="pull-right mrg-top-10">
+						<span class="pdd-right-10">Sort by : </span>
+						<ul class="list-unstyled list-inline inline-block">
+							<li class="list-inline-item pdd-right-10">
+								<a href="" class="text-gray text-semibold active">Name</a>
+							</li>
+							<li class="list-inline-item pdd-right-10">
+								<a href="" class="text-gray text-semibold">Date</a>
+							</li>
+							<li class="list-inline-item pdd-right-10">
+								<a href="" class="text-gray text-semibold">Most Viewed</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="card-body">
+
+					<ngx-masonry class="row" [useImagesLoaded]="true">
+						<ngxMasonryItem class="col-md-3 masonry-brick masonry-item mrg-btm-30" *ngFor="let item of masonryItems">
+							<div class="gallery-item">
+                                <img class="img-fluid" [src]="item.src" alt="">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <div class="inline-block">
+                                            <h4 class="caption-title">{{ item.title }}</h4>
+                                            <span class="caption-date">{{ item.date }}</span>
+                                        </div>
+                                        <div class="inline-block pull-right pdd-top-20 font-size-16">
+                                            <i class="ti-heart text-white"></i>
+                                            <span class="text-white">18</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+						</ngxMasonryItem>
+					</ngx-masonry>
+				</div>
+			</div>
+		</div>
+	</div>				
+</div>

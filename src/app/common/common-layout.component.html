@@ -1,0 +1,123 @@
+<div class="app" [ngClass]="
+    {
+        'is-collapsed': app.layout.isMenuCollapsed,
+        'is-opened': app.layout.isMenuOpened,
+        'rtl' : app.layout.rtlActived
+    }">
+    <div class="layout" [ngClass]="headerSelected">
+
+        <div [ngClass]="sidenavSelected">
+           
+            <!-- Side Nav START -->
+            <div class="side-nav" sideBar>
+                <div class="side-nav-inner">
+                    <div class="side-nav-logo">
+                        <!-- <a href="" [routerLink]="['/dashboard']">
+                            <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                           
+                        </a> -->
+                        <div class="mobile-toggle side-nav-toggle">
+                            <a href="javascript:void(0);" (click)="app.layout.isMenuCollapsed = !app.layout.isMenuCollapsed">
+                                <i class="ti-arrow-circle-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="side-nav-menu scrollable">
+                        <li clas="nav-item" routerLinkActive="active">
+                            <a class="mrg-top-30" href="" [routerLink]="['/tables/data-table']">
+                                <span class="icon-holder">
+                                    <i class="ti-user" style="color: white;"></i>
+                                </span>
+                                <span class="">C M</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Nav END -->
+
+            <!-- Page Container START -->
+            <div class="page-container">
+
+                <!-- Top Nav START -->
+                <div class="header navbar">
+                  
+                    <div class="header-container">
+                        <ul class="nav-left">
+                            <li>
+                                <a class="side-nav-toggle" href="javascript:void(0);" (click)="app.layout.isMenuCollapsed = !app.layout.isMenuCollapsed">
+                                    <i class="ti-view-list" style="color: white;"></i>
+                                   
+                                </a>
+                                
+                            </li>
+                            
+                            <li>
+                                <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                             
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="user-profile dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                   
+                                    <div class="user-info">
+                                        <span class="name pdd-right-5" style="color: white;">Name</span>
+                                        <i  style="color: white;" class="ti-angle-down font-size-10"></i>
+                                    </div>
+
+                                    <img class="profile-img img-fluid" src="assets/images/user.jpg">
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="">
+                                            <i class="ti-settings pdd-right-10"></i>
+                                            <span>Admin Setuo</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="ti-user pdd-right-10"></i>
+                                            <span>C Password</span>
+                                        </a>
+                                    </li>
+                                 
+                                    <li>
+                                        <a href="">
+                                            <i class="ti-power-off pdd-right-10"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="notifications dropdown">
+                                <span class="counter">2</span>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                </a>
+                               
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- Top Nav END -->
+
+
+             
+
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <router-outlet></router-outlet>
+                </div>    
+                <!-- Content Wrapper END -->
+
+              
+                
+            </div>
+            <!-- Page Container END -->
+
+         </div>
+    </div>    
+</div>

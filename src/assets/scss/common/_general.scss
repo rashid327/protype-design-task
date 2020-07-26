@@ -1,0 +1,415 @@
+/*----------------------------
+--------- 1. General ---------
+----------------------------*/
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,500,700');
+
+html, html a, body {
+   -webkit-font-smoothing: antialiased;
+}
+
+body {
+   font-family: $font-primary;
+   font-size: 14px;
+   background-color: $default-gray;
+   color: $default-text-color;
+   line-height: 1.5;
+   letter-spacing: 0.2px;
+   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $default-dark;
+	font-family: $font-secondary;
+	letter-spacing: 0.5px;
+	font-weight: normal;
+	line-height: 1.5;
+	
+	a {
+		font-family: $font-secondary;
+	}
+	
+	small {
+		font-weight: 300;
+		color: lighten($default-dark,5%);
+	}
+}
+
+h1 {
+	font-size: 26px;
+}
+
+h2 {
+	font-size: 22px;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+p {
+	font-family: $font-primary;
+	color: $default-text-color;
+	line-height: 1.9;
+}
+
+.lead {
+	font-size: 18px;
+}
+
+ul {
+	margin-bottom: 0px;
+}
+
+a {
+	color: $default-info;
+	
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: darken($default-info,10%);
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&.text-gray {
+
+		&:hover,
+		&:focus,
+		&.active {
+			color: $default-dark !important;
+		}
+	}
+}
+
+:focus {
+	outline: none;
+}
+
+hr {
+    border-top: 1px solid $border-color;
+}
+
+.font-primary {
+	font-family: $font-primary;
+}
+
+.font-secondary {
+	font-family: $font-secondary;
+}
+
+.text-link {
+	
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.text-opacity {
+	opacity: 0.85;
+}
+
+.text-white {
+	color: $default-white !important;
+}
+
+.text-dark {
+	color: $default-dark !important;
+}
+
+.text-gray {
+	color: $default-text-color !important;
+}
+
+.text-primary {
+	color: $default-primary !important;
+}
+
+.text-success {
+	color: $default-success !important;
+}
+
+.text-info {
+	color: $default-info !important;
+}
+
+.text-warning {
+	color: $default-warning !important;
+}
+
+.text-danger {
+	color: $default-danger !important;
+}
+
+.bg-white {
+	background-color: $default-white !important;
+}
+
+.bg-dark {
+	background-color: $default-dark !important;
+}
+
+.bg-gray {
+	background-color: darken($default-gray, 3%) !important;
+}
+
+.bg-primary {
+	background-color: $default-primary !important;
+}
+
+.bg-info {
+	background-color: $default-info !important;
+}
+
+.bg-success {
+	background-color: $default-success !important;
+}
+
+.bg-warning {
+	background-color: $default-warning !important;
+}
+
+.bg-danger {
+	background-color: $default-danger !important;
+}
+
+.bg-primary-inverse {
+	@include background-opacity($default-primary, 0.1);
+}
+
+.bg-success-inverse {
+	@include background-opacity($default-success, 0.1);
+}
+
+.bg-info-inverse {
+	@include background-opacity($default-info, 0.1);
+}
+
+.bg-warning-inverse {
+	@include background-opacity($default-warning, 0.1);
+}
+
+.bg-danger-inverse {
+	@include background-opacity($default-danger, 0.1);
+}
+
+.bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.overlay-dark {
+	position: relative;
+	overflow: hidden;	
+	color: darken($default-white, 20%);
+	
+	
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: $default-white;
+	}
+	
+	p {
+		color: darken($default-white, 20%);
+	}
+	
+	&:before {
+		content:"";
+		background-color: $default-dark;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		top: 0px;
+		left: 0px;
+		z-index: 2
+	}
+	
+	>div {
+		position: relative;
+		z-index: 3;
+	}
+}
+
+blockquote {
+    border-left: 0px;
+	padding-left: 30px;
+	position: relative;
+	
+	&:before {
+		font-family: 'themify';
+		content: "\e67f";
+		position: absolute;
+		left: 0px;
+		color: $default-dark;
+	}
+}
+	
+.fade {
+	&.in {
+		opacity: 1;
+	}
+}	
+
+.collapse {
+	&.in {
+		display: block;
+	}
+}
+
+iframe {
+	border: 0;
+
+	@include screen-mobile {
+		min-height: 175px !important;
+		height: auto;
+	}
+}
+
+@include print {
+	body {
+		font-size: 10px;
+	}	
+
+	.mrg-top-30,
+	.mrg-top-20 {
+		margin-top: 15px !important;
+	}
+
+	.print-invisible {
+		display: none;
+	}
+}
+
+
+.page-container .main-content {
+    padding: 95px 15px 15px 15px;
+    min-height: calc(100vh - 60px);
+    background-color: white !important;
+}
+
+/* set all stars to 'empty star' */
+.stars-container {
+	display: inline-block;
+	vertical-align: top;
+}
+/* set all stars to 'empty star' */
+.stars-container .star {
+	float: right;
+	display: inline-block;
+	padding: 2px;
+	color: blue;
+}
+
+.stars-container .star:before {
+	content:"\f006";
+	/* fontAwesome empty star code */
+}
+.star.selected:before {
+	content:"\f005";
+	color: blue ;
+	/* fontAwesome filled star code */
+}
+.star:before, .star.selected ~ .star:before {
+	content:"\f005";
+}
+	
+.dataTables_length{
+	display: none !important;
+
+}
+.dataTables_wrapper .dataTables_filter {
+    display: none !important;
+}
+
+
+.header {
+    width: 100% !important;
+    z-index: 1000000 !important;
+	margin-left: -280px !important;
+	background-color: #005baa !important;
+	border-bottom: 1px solid #005baa !important;
+}
+.page-container .main-content {
+    min-height:100vh !important;
+}
+.side-nav .side-nav-inner .side-nav-menu {
+    height: 100% !important;
+    margin-top: 65px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #005baa !important;
+    border-radius: 25% !important;
+}
+.side-nav .side-nav-inner .side-nav-menu li {
+    background: #3b3b3b !important;
+}
+.side-nav {
+    background-color: #555555 !important;
+    top: -30px !important;
+}
+.side-nav .side-nav-inner .side-nav-menu li a {
+	color: white !important; 
+}
+
+.is-collapsed .header {
+    width: 100% !important;
+    margin-left: -70px !important;
+}
+.side-nav .side-nav-inner .side-nav-menu>li>a {
+    padding: 10px 19px !important;
+}
+
+.modal-footer {
+    border-top: 1px solid white !important;
+    text-align: center !important;
+}
+.dataTables_wrapper .dataTables_paginate {
+    float: none !important;
+    text-align: center !important;
+    padding-top: 8.25em !important;
+}
+.dataTables_wrapper .dataTables_info {
+    padding-top: 8.25em !important;
+}
+
+.msg-lbl{
+	margin-top: 15%;
+    color: #005baa;
+    font-weight: bold;
+}
+.edit-pen{
+	color: #005baa;
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+

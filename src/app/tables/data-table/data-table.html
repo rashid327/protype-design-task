@@ -1,0 +1,176 @@
+<div class="container-fluid">
+	<div class="page-title">
+		<h4>Registered Candidate</h4>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-block">   
+                    <div class="table-overflow">
+                        <a (click)="notes()"  class="btn btn-primary" style="color: white;">Notes</a>
+                        <table id="alertsTableA" class="table table-sm table-hover" datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th style="width: 175px;">Name</th>
+                                    <th>Phone/Email</th>
+                                    <th  style="width: 115px;">City</th>
+                                    <th>Rating</th>
+                                    <th>Register Date</th>
+                                    <th>Gender / Age</th>
+                                    <th>Attachments</th>
+                                    <th>Actions</th>	
+                                </tr>
+                            </thead>
+                            <tbody id="alertsTableA">
+                                <tr *ngFor="let data of listData">
+                                    <td>
+                                        <div class="checkbox mrg-left-20">
+                                            <input  id="{{data.CandidateID}}" name="check" value="{{data.CandidateID}}" type="checkbox">
+                                            <label for="{{data.CandidateID}}"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="text-info"><b>{{data.Name}}</b></span>
+                                    </td>
+                                    <td style="line-height: 18px">
+                                        <span class="">1(646) 464-6445</span><br>
+                                        <span class="">abc@gmail.com</span>   
+                                    </td>
+                                    <td> 
+                                        <span class="">{{data.City_Name}}</span>
+                                    </td>
+                                    <td>
+                                        <div class="rating">
+                                            <span class="stars-container">
+                                               
+                                                <span id="star4" class="fa star"></span>
+                                                <span id="star3" class="fa star selected"></span>
+                                                <span id="star2" class="fa star selected"></span>
+                                                <span id="star1" class="fa star selected"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="">{{data.CandidateRegisterDate | date:"dd-MM-yyyy"}}</span>
+                                    </td>
+                                    <td><span class="">{{data.CandidateGender}} / {{CandidateAge}}</span></td>
+                                    <td><span class="text-info">Atts( {{data.CandidateAttachmentCount}} )</span></td>
+                                    <td>
+                                        <div class="mrg-top-10 text-center">
+                                            <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle">
+                                                <i class="ti-more-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                               
+                            </tbody> 
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+
+<!-- notes Modal content-->
+<div class="modal fade" id="notes" role="dialog" style="background: white;">
+    <div class="modal-dialog" style="margin-top: 140px;">
+      <div class="modal-content">
+        <div class="modal-header"
+          style="border-bottom: 1px solid white; padding-bottom: 8px; background-color: white">
+          <span style="font-size: 19px; color: #005baa; margin-left: 140px;"><b>Candidate Notes</b></span>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="height:400px !important;">
+           
+            <div *ngFor="let data of notesData">
+                <div class="row">
+                    <div class="col-md-9">
+                        <b>{{data.FirstName}} </b>
+                    </div>
+                    <div class="col-md-3">
+                        {{data.note_date | date:"dd-MM-yyyy"}} 
+                    </div>
+                </div>
+                {{data.msg_note}}
+                <i class="ti-pencil edit-pen" (click)="editNotes(data.id)"  data-toggle="modal" data-target="#editnotes"></i>
+                <hr>
+            </div>
+    
+        </div>
+        <div class="modal-footer" style="padding: 8px 15px !important; background-color: white">
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2" style="margin-right: 125px;">
+                    <a  data-toggle="modal" data-target="#addnotes" class="btn btn-primary" href="">Add</a>
+                </div>
+                <div class="col-md-5">
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <!-- Add Notes Modal content-->
+<div class="modal fade" id="addnotes" role="dialog" style="background: white;">
+    <div class="modal-dialog" style="margin-top: 140px;">
+        <div class="modal-content">
+            <div class="modal-header"
+            style="border-bottom: 1px solid white; padding-bottom: 8px; background-color: white">
+            <span style="font-size: 19px; color: #005baa; margin-left: 140px;"><b>Candidate Notes</b></span>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="height:400px !important;">
+                <label class="msg-lbl">Notes</label>
+                <textarea id="addmsg" name="addmsg" rows="10" cols="58"></textarea>
+                <b style="color: red;"> {{message}}</b> 
+            <div class="modal-footer" style="padding: 8px 15px !important; background-color: white">
+                <div class="row" style=" margin-right: 110px;">
+                    <div class="col-md-5">
+                        <button type="button" id="btn" class="btn" data-dismiss="modal">Close</button> 
+                    </div>      
+                    <div class="col-md-3">
+                        <button type="button" id="deleted" class="btn btn-primary" id="btnAntennaDel"
+                        (click)="addNotes()">ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Notes Modal content-->
+<div class="modal fade" id="editnotes"  style="background: white;">
+    <div class="modal-dialog" style="margin-top: 140px;">
+        <div class="modal-content">
+            <div class="modal-header"
+            style="border-bottom: 1px solid white; padding-bottom: 8px; background-color: white">
+            <span style="font-size: 19px; color: #005baa; margin-left: 140px;"><b>Candidate Notes</b></span>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="height:400px !important;">
+                <label class="msg-lbl">Notes</label>
+                <textarea id="editmsg" name="editmsg" rows="10" cols="58"></textarea>
+                <b style="color: red;"> {{editMessage}}</b> 
+                <div class="modal-footer" style="padding: 8px 15px !important; background-color: white">
+                    <div class="row" style=" margin-right: 110px;">
+                        <div class="col-md-5">
+                            <button type="button" id="editbtn" class="btn" data-dismiss="modal">Close</button>
+                        </div>   
+                        <div class="col-md-3">
+                            <button type="button" id="deleted" class="btn btn-primary" id="btnAntennaDel"
+                            (click)="updatesNotes()">ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
